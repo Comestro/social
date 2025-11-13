@@ -13,7 +13,7 @@
                 <h1 class="text-2xl font-bold text-white">Social</h1>
                 <!-- search -->
                 <div>
-                    <input type="text" placeholder="Search..." class="px-3 py-2 rounded" size="120">
+                    <input type="text" placeholder="Search..." class="px-3 py-2 rounded" size="60">
                 </div>  
 
                 <!-- links -->

@@ -14,8 +14,6 @@
                 <input type="password" id="password" wire:model="password" class="w-full px-3 py-2 border rounded" >
                 @error('password') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
             </div>
-          
             <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Login</button>
-
         </form>
 </div>
