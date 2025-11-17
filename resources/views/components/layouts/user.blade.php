@@ -20,7 +20,7 @@
                 <nav class="mt-0">
                     <ul class="flex space-x-4">
                         <li><a href="{{ route('dashboard') }}" class="text-white hover:underline">Dashboard</a></li>
-                        <li><a href="#" class="text-white hover:underline">Profile</a></li>
+                        <li><a href="{{ route("profile") }}" class="text-white hover:underline">Profile</a></li>
                         <li><a href="#" class="text-white hover:underline">Settings</a></li>
                         <li>
                             <form method="POST" action="{{ route('logout') }}">

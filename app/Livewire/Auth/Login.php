@@ -3,6 +3,8 @@
 namespace App\Livewire\Auth;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Validate;
 
 class Login extends Component
 {

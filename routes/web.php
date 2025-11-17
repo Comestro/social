@@ -9,22 +9,21 @@ use Illuminate\Support\Facades\Auth;
 
 // user components
 use App\Livewire\User\Dashboard;
-
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Livewire\User\Profile;
 
 
 Route::middleware(['guest'])->group(function () {
     Route::get("/register", Register::class)->name("register"); 
-    Route::get("/login", Login::class)->name("login");
-    Route::get("/logout", function () {
-        Auth::logout();
-        return redirect()->route("login");
-    })->name("logout");
+    Route::get("/", Login::class)->name("login");
+    
 });
 
 
 Route::middleware(['auth'])->group(function () {
     Route::get("/dashboard", Dashboard::class)->name("dashboard");
+    Route::get("/profile", Profile::class)->name("profile");
+    Route::post("/logout", function () {
+        Auth::logout();
+        return redirect()->route("login");
+    })->name("logout");
 });
