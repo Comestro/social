@@ -1,7 +1,9 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-100">
     {{-- Stop trying to control. --}}
-    <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h1><img src="{{ asset('images/login.png') }}" alt="Logo" class="mx-auto mb-4 w-24 h-24">Social</h1>
+    <div class="bg-white px-8 py-2 rounded shadow-md w-full max-w-md">
+        <h1>
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="mx-auto mb-4 w-54 h-54">
+        </h1>
         <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
         <form wire:submit.prevent="login">
             <div class="mb-4">

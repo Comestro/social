@@ -13,6 +13,7 @@ class CreateForm extends Component
 
     public function createPost()
     {
+        dd("here");
         $data = $this->validate();
 
         // add user_id

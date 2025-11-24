@@ -8,7 +8,7 @@
     </head>
     <body class="bg-gray-100 min-h-screen">
         <!-- add header -->
-        <header class="bg-sky-600 shadow flex-1 py-4 px-[10%] fixed top-0 w-full">
+        <header class="bg-sky-600 shadow flex-1 py-4 px-[10%] fixed top-0 w-full z-[999]">
             <div class="max-w-8xl mx-auto px-4 flex justify-between items-center">
                 <h1 class="text-2xl font-bold text-white">Social</h1>
                 <!-- search -->

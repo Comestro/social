@@ -11,10 +11,16 @@ class CallingPost extends Component
 
     public $posts;
 
+
     #[On("postCreated")]
-    public function mount()
+    public function mount($self=false)
     {
-        $this->posts = UserPost::orderBy('created_at', 'desc')->get();
+        if(!$self){
+            $this->posts = UserPost::orderBy('created_at', 'desc')->get();
+        }
+        else{
+            $this->posts = UserPost::where("user_id",auth()->user()->id)->orderBy('created_at', 'desc')->get();
+        }
     }
     public function render()
     {

@@ -4,7 +4,7 @@
             <div class="w-full bg-white p-4 rounded shadow">
                 <!-- user with avatar -->
                 <div class="flex items-center mb-2">
-                    <img src="{{ ($post->user->dp) ? $post->user->dp : asset('user-default.jpg') }}" alt="{{ $post->user->fname }}'s avatar" class="w-16 h-16 rounded-full mr-1">
+                    <img src="{{ ($post->user->dp) ? asset("storage/images/dp/".$post->user->dp) : asset('user-default.jpg') }}" alt="{{ $post->user->fname }}'s avatar" class="w-16 h-16 rounded-full mr-1">
                     <div class="flex flex-col justify-start">
                         <h2 class="text-lg font-bold">{{ $post->user->fname }} {{ $post->user->lname }}</h2>
                     <span class="text-gray-500 text-sm">{{ $post->created_at->diffForHumans() }}</span>

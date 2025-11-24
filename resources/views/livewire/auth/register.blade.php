@@ -1,6 +1,6 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-100">
     <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h1><img src="{{asset('images/login.png')}}" alt="Logo" class="mx-auto mb-4 w-24 h-24">Social</h1>
+        <h1><img src="{{asset('images/logo.png')}}" alt="Logo" class="mx-auto w-64 h-64">Social</h1>
         <h2 class="text-2xl font-bold mb-6 text-center">Register</h2>
         <form wire:submit.prevent="register">
             <div class="grid grid-cols-2 gap-3">

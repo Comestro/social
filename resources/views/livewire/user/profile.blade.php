@@ -69,6 +69,26 @@
                 <div class="w-2/12"></div>
 
             </div>
+
+            <div class="flex flex-1 mt-14">
+                <div class="w-4/12 p-3 mr-3 rounded-lg">
+                    {{-- about me --}}
+                    <h3 class="text-lg font-bold mb-2">About Me</h3>
+                    <p>{{ auth()->user()->bio ?? 'This user has not added a bio yet.' }}</p>
+                </div>
+                <div class="w-8/12">
+                    <livewire:user.post.create-form />
+                    {{-- user posts --}}
+                    @livewire('user.post.calling-post', ['self' => true])
+                </div>
+            </div>
+        </div>
+        <div class="w-2/12">
+            {{-- ads --}}
+        </div>
+    <div class="w-2/12 h-screen overflow-y-auto bg-white p-3 rounded-lg shadow fixed top-16 right-0">
+            {{-- online friends --}}
+            <livewire:user.onlinefriends />
         </div>
     </div>
 </div>
