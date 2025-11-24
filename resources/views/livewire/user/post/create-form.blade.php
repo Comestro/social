@@ -8,6 +8,18 @@
                     <textarea id="content" rows="4" wire:model="content" class="w-full px-3 py-2 border-0 rounded text-3xl focus:border-0 focus:outline-0" placeholder="What's on your mind?"></textarea>
                     @error('content') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
+                {{-- post image --}}
+                <div class="mb-4 w-32">
+                    <input type="file" wire:model="image" accept="image/*">
+                    {{-- preview --}}
+                    @if ($image)
+                        <div class="mt-4">
+                            <img src="{{ $image->temporaryUrl() }}" alt="Image Preview" class="max-w-full h-auto rounded">
+                        </div>
+                    @endif
+                    @error('image') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                </div>
+
                 <button type="submit" class=" px-3 bg-sky-600 text-white py-2 rounded hover:bg-sky-800 self-end">Create Post</button>
             </form>
         </div>

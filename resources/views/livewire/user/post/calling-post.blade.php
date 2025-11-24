@@ -10,10 +10,17 @@
                     <span class="text-gray-500 text-sm">{{ $post->created_at->diffForHumans() }}</span>
                     </div>
                 </div>
+               
                 <p class="text-gray-700 text-xl">{{ $post->content }}</p>
+                 {{-- image --}}
+                @if ($post->image)
+                    <div class="mb-4">
+                        <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image" class="max-w-full h-auto rounded">
+                    </div>
+                @endif
                 <!-- like, comment, share buttons -->
                 <div class="flex items-center mt-4">
-                    <button class="text-blue-500 hover:underline mr-4">Like</button>
+                    <button wire:click="likePost({{ $post->id }})" class="text-blue-500 hover:underline mr-4">Like {{ ($post->likes()->count() > 0) ? "(".$post->likes()->count() .")" : "" }}</button>
                     <button class="text-blue-500 hover:underline mr-4">Comment</button>
                     <button class="text-blue-500 hover:underline">Share</button>
                 </div>

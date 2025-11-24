@@ -22,6 +22,23 @@ class CallingPost extends Component
             $this->posts = UserPost::where("user_id",auth()->user()->id)->orderBy('created_at', 'desc')->get();
         }
     }
+
+    public function likePost($postId)
+    {
+        // if already liked, then unlike
+
+        if(UserPost::find($postId)->likes()->where("user_id",auth()->id())->exists()){
+            UserPost::find($postId)->likes()->where("user_id",auth()->id())->delete();
+            $this->dispatch("postCreated");
+            return;
+        }
+        
+        $post = UserPost::find($postId);
+        if ($post) {
+            $post->likes()->create(['user_id' => auth()->id()]);
+        }
+        $this->dispatch("postCreated");
+    }
     public function render()
     {
         return view('livewire.user.post.calling-post', ['posts' => $this->posts]);
