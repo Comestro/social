@@ -9,9 +9,11 @@
 
                 {{-- cover image --}}
                 <div class="h-full bg-gray-300">
-                    <img src="@if (auth()->user()->cover) {{ asset('storage/images/cover/' . auth()->user()->cover) }} @else {{ asset('images/cover.jpg') }} @endif"
+                    <img src="@if ($selectedUser->cover) {{ asset('storage/images/cover/' . $selectedUser->cover) }} @else {{ asset('images/cover.jpg') }} @endif"
                         alt="Cover Image" class="w-full h-full object-cover">
                 </div>
+                @if ($selectedUser->id == auth()->user()->id)
+                    
                 {{-- change cover button --}}
                 <div class="absolute right-0 top-0 p-2 bg-gradient-to-t from-black via-white/10 to-black/0 w-full h-full">
                     <form wire:submit.prevent="updateProfile" method="post" enctype="multipart/form-data"
@@ -31,12 +33,17 @@
 
                     </form>
                 </div>
+                                @endif
+
                 {{-- profile image --}}
                 <div class="absolute left-24 bottom-0 transform translate-y-1/3">
                     <div class="w-32 h-32 rounded-full border-4 border-white overflow-hidden bg-gray-300">
-                        <img src="@if (auth()->user()->dp) {{ asset('storage/images/dp/' . auth()->user()->dp) }} @else {{ asset('images/dp.png') }} @endif"
+                        <img src="@if ($selectedUser->dp) {{ asset('storage/images/dp/' . $selectedUser->dp) }} @else {{ asset('images/dp.png') }} @endif"
                             alt="Profile Image" class="w-full h-full object-cover">
                     </div>
+                    @if ($selectedUser->id == auth()->user()->id)
+                        
+                    
                     {{-- change profile button --}}
                     <div class="absolute right-0 bottom-0 p-1">
                         <form wire:submit.prevent="updateProfile" method="post" enctype="multipart/form-data"
@@ -55,11 +62,12 @@
 
                             </button>
                     </div>
+                    @endif
                 </div>
 
                 {{-- profile name and update profile button --}}
                 <div class="-mt-10 ml-60 absolute">
-                    <h2 class="text-2xl font-bold text-white">{{ auth()->user()->fname }} {{ auth()->user()->lname }}</h2>
+                    <h2 class="text-2xl font-bold text-white">{{ $selectedUser->fname }} {{ $selectedUser->lname }}</h2>
                   
                 {{-- ads --}}
                 <div class="w-2/12">
@@ -74,12 +82,12 @@
                 <div class="w-4/12 p-3 mr-3 rounded-lg">
                     {{-- about me --}}
                     <h3 class="text-lg font-bold mb-2">About Me</h3>
-                    <p>{{ auth()->user()->bio ?? 'This user has not added a bio yet.' }}</p>
+                    <p>{{ $selectedUser->bio ?? 'This user has not added a bio yet.' }}</p>
                 </div>
                 <div class="w-8/12">
                     <livewire:user.post.create-form />
                     {{-- user posts --}}
-                    @livewire('user.post.calling-post', ['self' => true])
+                    @livewire('user.post.calling-post', ['selectedUser' => $selectedUser])
                 </div>
             </div>
         </div>

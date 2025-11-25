@@ -13,13 +13,14 @@ class CallingPost extends Component
 
 
     #[On("postCreated")]
-    public function mount($self=false)
+    public function mount($selectedUser = null)
     {
-        if(!$self){
-            $this->posts = UserPost::orderBy('created_at', 'desc')->get();
-        }
-        else{
-            $this->posts = UserPost::where("user_id",auth()->user()->id)->orderBy('created_at', 'desc')->get();
+        if ($selectedUser && $selectedUser->id != auth()->user()->id) {
+            // viewing other user's posts
+            $this->posts = UserPost::where("user_id", $selectedUser->id)->orderBy('created_at', 'desc')->get();
+        } else {
+            // viewing own posts
+            $this->posts = UserPost::where("user_id", auth()->user()->id)->orderBy('created_at', 'desc')->get();
         }
     }
 

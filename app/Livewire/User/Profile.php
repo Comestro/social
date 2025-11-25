@@ -13,6 +13,8 @@ class Profile extends Component
 {
     use WithFileUploads;
 
+    public $selectedUser = null;
+
     #[Validate("image|max:1024|nullable|mimes:jpg,jpeg,png")]
     public $dp;
 
@@ -27,11 +29,27 @@ class Profile extends Component
         $this->updateProfile();
     }
 
+    public function mount($id = null){
+        if($id && $id != auth()->user()->id){
+            $user = \App\Models\User::find($id);
+            if($user){
+                $this->selectedUser = $user;
+            }else{
+                return redirect()->route("profile");
+            }
+        }else{
+            $this->selectedUser = auth()->user();
+        }
+    }
+
 
 
     public function updateProfile()
     {
 
+        if($this->selectedUser->id != auth()->user()->id){
+            return;
+        }
         // dd("tested");
         $data = $this->validate();
 

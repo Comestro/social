@@ -19,9 +19,11 @@ Route::middleware(['guest'])->group(function () {
 });
 
 
+
+
 Route::middleware(['auth'])->group(function () {
     Route::get("/dashboard", Dashboard::class)->name("dashboard");
-    Route::get("/profile", Profile::class)->name("profile");
+    Route::get("/profile/{id?}", Profile::class)->name("profile");
     Route::post("/logout", function () {
         Auth::logout();
         return redirect()->route("login");
