@@ -65,9 +65,13 @@
         <div class="flex items-center justify-end gap-2 w-1/4">
             <a href="{{ route('profile') }}" class="hidden xl:flex items-center gap-2 hover:bg-gray-100 p-1 rounded-full pr-3 font-semibold text-[15px]">
                 <div class="w-8 h-8 rounded-full bg-gray-300 overflow-hidden">
-                    <img src="https://ui-avatars.com/api/?name={{ auth()->user()->name ?? 'User' }}&background=random" alt="Profile" class="w-full h-full object-cover">
+                    @if (auth()->user()->dp)
+                        <img src="{{ asset('storage/images/dp/' . auth()->user()->dp) }}" alt="Profile" class="w-full h-full object-cover">
+                    @else
+                        <img src="https://ui-avatars.com/api/?name={{ auth()->user()->name ?? 'User' }}&background=random" alt="Profile" class="w-full h-full object-cover">
+                    @endif
                 </div>
-                <span>{{ auth()->user()->name ?? 'User' }}</span>
+                <span>{{ auth()->user()->fname . ' ' . auth()->user()->lname ?? 'User' }}</span>
             </a>
             
             <div class="flex gap-2">

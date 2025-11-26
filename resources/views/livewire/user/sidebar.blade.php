@@ -3,7 +3,11 @@
         <li>
             <a href="{{ route('profile') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-200 transition cursor-pointer">
                 <div class="w-9 h-9 rounded-full overflow-hidden border border-gray-200">
-                    <img src="https://ui-avatars.com/api/?name={{ auth()->user()->name ?? 'User' }}&background=random" alt="Profile" class="w-full h-full object-cover">
+                    @if (auth()->user()->dp)
+                        <img src="{{ asset('storage/images/dp/' . auth()->user()->dp) }}" alt="Profile" class="w-full h-full object-cover">
+                    @else
+                        <img src="https://ui-avatars.com/api/?name={{ auth()->user()->name ?? 'User' }}&background=random" alt="Profile" class="w-full h-full object-cover">
+                    @endif
                 </div>
                 <span class="font-medium text-[15px] text-[#050505]">{{ auth()->user()->name ?? 'User' }}</span>
             </a>

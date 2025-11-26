@@ -14,6 +14,7 @@
         </div>
     </div>
     
+    
     @if ($image)
         <div class="mb-4 relative">
             <img src="{{ $image->temporaryUrl() }}" alt="Preview" class="rounded-lg max-h-[300px] w-full object-cover">
@@ -24,6 +25,7 @@
             </button>
         </div>
     @endif
+
 
     <div class="border-t border-gray-200 pt-2 flex justify-between">
         <button class="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg hover:bg-gray-100 transition">

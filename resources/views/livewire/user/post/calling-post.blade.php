@@ -5,7 +5,12 @@
         <div class="flex items-center justify-between px-4 py-3">
             <div class="flex items-center gap-2">
                 <a href="{{ route('profile', ['id' => $post->user->id]) }}" class="w-10 h-10 rounded-full overflow-hidden cursor-pointer">
-                    <img src="{{ ($post->user->dp) ? asset("storage/images/dp/".$post->user->dp) : 'https://ui-avatars.com/api/?name='.$post->user->name.'&background=random' }}" alt="Avatar" class="w-full h-full object-cover">
+                    @if ($post->user->dp)
+                        <img src="{{ asset('storage/images/dp/' . $post->user->dp) }}" alt="Profile" class="w-full h-full object-cover">
+                    @else
+                        <img src="https://ui-avatars.com/api/?name={{ $post->user->name ?? 'User' }}&background=random" alt="Profile" class="w-full h-full object-cover">
+                    @endif
+
                 </a>
                 <div class="flex flex-col">
                     <a href="{{ route('profile', ['id' => $post->user->id]) }}" class="font-semibold text-[#050505] text-[15px] hover:underline cursor-pointer">
