@@ -9,6 +9,8 @@ class Onlinefriends extends Component
 {
     public function render()
     {
-        return view('livewire.user.onlinefriends',["friends"=>User::where("id","!=",auth()->user()->id)->get()]);
+        $myFriendsIds = auth()->user()->friends()->pluck('id')->toArray();
+        $friends = User::whereIn('id', $myFriendsIds)->get();
+        return view('livewire.user.onlinefriends',["friends"=>$friends]);
     }
 }

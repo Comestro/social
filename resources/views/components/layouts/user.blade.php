@@ -13,7 +13,10 @@
                 <h1 class="text-2xl font-bold text-white">Social</h1>
                 <!-- search -->
                 <div>
-                    <input type="text" placeholder="Search..." class="px-3 py-2 rounded" size="60">
+                    <form action="{{ route('find.friends') }}" method="get">
+                    <input type="text" placeholder="Search..." class="px-3 py-2 rounded" name="query" size="60">
+                    <button type="submit" class="hidden">Search</button>
+                    </form>
                 </div>  
 
                 <!-- links -->

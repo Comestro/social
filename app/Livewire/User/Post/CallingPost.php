@@ -20,7 +20,9 @@ class CallingPost extends Component
             $this->posts = UserPost::where("user_id", $selectedUser->id)->orderBy('created_at', 'desc')->get();
         } else {
             // viewing own posts
-            $this->posts = UserPost::where("user_id", auth()->user()->id)->orderBy('created_at', 'desc')->get();
+            // only friends post show here
+            $myFriendsIds = auth()->user()->friends()->pluck('id')->toArray();
+            $this->posts = UserPost::whereIn("user_id", $myFriendsIds)->orWhere("user_id", auth()->user()->id)->orderBy('created_at', 'desc')->get();
         }
     }
 

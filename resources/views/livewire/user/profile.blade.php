@@ -68,6 +68,12 @@
                 {{-- profile name and update profile button --}}
                 <div class="-mt-10 ml-60 absolute">
                     <h2 class="text-2xl font-bold text-white">{{ $selectedUser->fname }} {{ $selectedUser->lname }}</h2>
+                    {{-- add Friend --}}
+                    <div class="mt-2">
+                        @if ($selectedUser->id != auth()->user()->id)
+                            <livewire:user.friendship-button :selectedUser="$selectedUser" />
+                        @endif
+                    </div>
                   
                 {{-- ads --}}
                 <div class="w-2/12">

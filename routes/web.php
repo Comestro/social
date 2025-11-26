@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\Login;
 use Illuminate\Support\Facades\Auth;
+use App\Livewire\User\FindFriends;
 
 // user components
 use App\Livewire\User\Dashboard;
@@ -24,6 +25,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get("/dashboard", Dashboard::class)->name("dashboard");
     Route::get("/profile/{id?}", Profile::class)->name("profile");
+    Route::get("/find", FindFriends::class)->name("find.friends");
     Route::post("/logout", function () {
         Auth::logout();
         return redirect()->route("login");

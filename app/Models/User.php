@@ -39,6 +39,22 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function friends()
+    {
+        $user = auth()->user();
+
+        $friendsIds = \App\Models\FriendRequest::where(function ($query) use ($user) {
+            $query->where('sender_id', $user->id)
+                ->orWhere('receiver_id', $user->id);
+        })->where('status', 'accepted')
+        ->get()
+        ->map(function ($friendRequest) use ($user) {
+            return $friendRequest->sender_id === $user->id ? $friendRequest->receiver_id : $friendRequest->sender_id;
+        })->toArray();
+
+        return User::whereIn('id', $friendsIds);
+    }
+
     /**
      * Get the attributes that should be cast.
      *
