@@ -4,9 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.tailwindcss.com"></script>
-        <title>{{ $title ?? 'Page Title' }}</title>
+        <title>{{ $title ?? 'Social' }}</title>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            }
+        </style>
     </head>
-    <body class="bg-gray-100 min-h-screen">
+    <body class="bg-[#f0f2f5] min-h-screen text-[#1c1e21]">
         {{ $slot }}
     </body>
 </html>
