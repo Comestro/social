@@ -7,36 +7,7 @@
     <!-- Main Feed -->
     <div class="w-full lg:w-[590px] mx-auto pb-8">
         <!-- Stories (Placeholder) -->
-        <div class="relative h-[200px] mb-6 flex gap-2 overflow-x-auto no-scrollbar">
-            <!-- Add Story Card -->
-            <div class="min-w-[112px] h-full bg-white rounded-xl shadow overflow-hidden relative cursor-pointer group">
-                @if (auth()->user()->dp)
-                    <img src="{{ asset('storage/images/dp/' . auth()->user()->dp) }}" alt="Profile" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                @else
-                    <img src="https://ui-avatars.com/api/?name={{ auth()->user()->name ?? 'User' }}&background=random" alt="Profile" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                @endif
-                <div class="absolute bottom-0 w-full bg-white h-12 flex justify-center items-center">
-                    <div class="w-8 h-8 bg-blue-500 rounded-full border-4 border-white flex items-center justify-center -mt-8 text-white font-bold text-xl">+</div>
-                </div>
-                <div class="absolute bottom-2 w-full text-center text-xs font-semibold text-black">Create story</div>
-            </div>
-            <!-- Story 1 -->
-            <div class="min-w-[112px] h-full bg-gray-200 rounded-xl overflow-hidden relative cursor-pointer">
-                <img src="https://picsum.photos/200/300?random=1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                <div class="absolute top-2 left-2 w-8 h-8 rounded-full border-4 border-blue-500 overflow-hidden">
-                    <img src="https://i.pravatar.cc/100?img=1" class="w-full h-full object-cover">
-                </div>
-                <div class="absolute bottom-2 left-2 text-white font-semibold text-sm shadow-black drop-shadow-md">John Doe</div>
-            </div>
-             <!-- Story 2 -->
-             <div class="min-w-[112px] h-full bg-gray-200 rounded-xl overflow-hidden relative cursor-pointer">
-                <img src="https://picsum.photos/200/300?random=2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                <div class="absolute top-2 left-2 w-8 h-8 rounded-full border-4 border-blue-500 overflow-hidden">
-                    <img src="https://i.pravatar.cc/100?img=2" class="w-full h-full object-cover">
-                </div>
-                <div class="absolute bottom-2 left-2 text-white font-semibold text-sm shadow-black drop-shadow-md">Jane Smith</div>
-            </div>
-        </div>
+        <livewire:user.story />
 
         <livewire:user.post.create-form />
         <livewire:user.post.calling-post />

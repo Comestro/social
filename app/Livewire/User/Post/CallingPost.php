@@ -10,6 +10,7 @@ class CallingPost extends Component
 {
 
     public $posts;
+    public $content;
 
 
     #[On("postCreated")]
@@ -40,6 +41,20 @@ class CallingPost extends Component
         if ($post) {
             $post->likes()->create(['user_id' => auth()->id()]);
         }
+        $this->dispatch("postCreated");
+    }
+
+    public function addComment($postId)
+    {
+        $post = UserPost::find($postId);
+        if ($post) {
+            $post->comments()->create([
+                'user_id' => auth()->id(),
+                'comment' => $this->content
+            ]);
+        }
+        // reset
+        $this->content = "";
         $this->dispatch("postCreated");
     }
     public function render()

@@ -1,6 +1,6 @@
 <div>
     @foreach ($posts as $post)
-    <div class="bg-white rounded-lg shadow-sm mb-4">
+    <div class="bg-white rounded-lg shadow-sm mb-4" x-data="{open: false}">
         <!-- Header -->
         <div class="flex items-center justify-between px-4 py-3">
             <div class="flex items-center gap-2">
@@ -54,7 +54,7 @@
                 @endif
             </div>
             <div class="flex gap-3">
-                <span class="hover:underline cursor-pointer">0 Comments</span>
+                <span x-on:click="open = !open" class="hover:underline cursor-pointer">{{$post->comments->count()}} Comments</span>
                 <span class="hover:underline cursor-pointer">0 Shares</span>
             </div>
         </div>
@@ -66,7 +66,7 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" /></svg>
                     <span>Like</span>
                 </button>
-                <button class="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg hover:bg-gray-100 transition text-[#65676b] font-semibold text-[15px]">
+                <button x-on:click="open =  !open" class="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg hover:bg-gray-100 transition text-[#65676b] font-semibold text-[15px]">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" /></svg>
                     <span>Comment</span>
                 </button>
@@ -75,6 +75,41 @@
                     <span>Share</span>
                 </button>
             </div>
+        </div>
+        {{-- comment section --}}
+        <div x-show="open" class="px-4 pb-4">
+            <form wire:submit.prevent="addComment({{ $post->id }})" class="flex items-center gap-2">
+            <input type="text"  wire:model="content" placeholder="Write a comment..." class="w-full border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" autofocus>  
+            <input type="submit" value="Post" class="hidden mt-2 bg-blue-500 text-white font-semibold px-4 py-2 rounded-full hover:bg-blue-600 cursor-pointer"> 
+            </form>
+
+            {{--  calling post comment --}}
+            <div class="mt-4 space-y-4">
+                @foreach($post->comments as $comment)
+                    <div class="flex items-start gap-2">
+                        <a href="{{ route('profile', ['id' => $comment->user->id]) }}" class="w-8 h-8 rounded-full overflow-hidden cursor-pointer">
+                            @if ($comment->user->dp)
+                                <img src="{{ asset('storage/images/dp/' . $comment->user->dp) }}" alt="Profile" class="w-full h-full object-cover">
+                            @else
+                                <img src="https://ui-avatars.com/api/?name={{ $comment->user->name ?? 'User' }}&background=random" alt="Profile" class="w-full h-full object-cover">
+                            @endif
+                        </a>
+                        <div class="bg-gray-100 rounded-lg px-3 py-2">
+                            <a href="{{ route('profile', ['id' => $comment->user->id]) }}" class="font-semibold text-[#050505] text-[14px] hover:underline cursor-pointer">
+                                {{ $comment->user->fname }} {{ $comment->user->lname }}
+                            </a>
+                            <p class="text-[#050505] text-[14px]">{{ $comment->comment }}</p>
+                            <div class="text-[#65676b] text-[12px] mt-1 flex items-center gap-2">
+                                <span>{{ $comment->created_at->diffForHumans() }}</span>
+                                <button class="hover:underline">Like</button>
+                                <button class="hover:underline">Reply</button>      
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+
         </div>
     </div>
     @endforeach
