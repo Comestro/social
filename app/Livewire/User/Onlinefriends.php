@@ -10,7 +10,7 @@ class Onlinefriends extends Component
     public function render()
     {
         $myFriendsIds = auth()->user()->friends()->pluck('id')->toArray();
-        $friends = User::whereIn('id', $myFriendsIds)->get();
-        return view('livewire.user.onlinefriends',["friends"=>$friends]);
+        $users = User::whereIn('id', $myFriendsIds)->get();
+        return view('livewire.user.onlinefriends',["users"=>$users]);
     }
 }

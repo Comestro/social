@@ -1,6 +1,6 @@
 <div class="relative h-[200px] mb-6 flex gap-2 overflow-x-auto no-scrollbar">
     <!-- Add Story Card -->
-    <div class="min-w-[112px] h-full bg-white rounded-xl shadow overflow-hidden relative cursor-pointer group">
+    <div class="w-[112px] flex-shrink-0 h-full bg-white rounded-xl shadow overflow-hidden relative cursor-pointer group">
         @if (auth()->user()->dp)
             <img src="{{ asset('storage/images/dp/' . auth()->user()->dp) }}" alt="Profile"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
@@ -27,10 +27,10 @@
     {{-- calling stories --}}
     @foreach ($stories as $story)
         <!-- Story 1 -->
-        <div class="min-w-[112px] h-full bg-gray-200 rounded-xl overflow-hidden relative cursor-pointer">
+        <div class="w-[112px] flex-shrink-0 h-full bg-gray-200 rounded-xl overflow-hidden relative cursor-pointer">
             <img src="{{ asset('storage/' . $story->media_path) }}"
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-            <div class="absolute top-2 left-2 w-8 h-8 rounded-full border-4 border-blue-500 overflow-hidden">
+            <div class="absolute top-2 left-2 w-8 h-8 rounded-full border-4 border-blue-50 overflow-hidden">
                 @if ($story->user->dp)
                     <img src="{{ asset('storage/images/dp/' . $story->user->dp) }}" class="w-full h-full object-cover">
                     

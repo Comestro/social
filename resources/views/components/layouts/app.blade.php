@@ -11,7 +11,7 @@
             }
         </style>
     </head>
-    <body class="bg-[#f0f2f5] min-h-screen text-[#1c1e21]">
+    <body class="bg-slate-50 min-h-screen text-slate-900">
         {{ $slot }}
     </body>
 </html>

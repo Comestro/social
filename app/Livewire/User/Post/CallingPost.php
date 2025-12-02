@@ -27,7 +27,7 @@ class CallingPost extends Component
         }
     }
 
-    public function likePost($postId)
+    public function like($postId)
     {
         // if already liked, then unlike
 

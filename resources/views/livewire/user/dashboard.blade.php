@@ -1,33 +1,61 @@
-<div class="flex justify-between bg-[#f0f2f5] min-h-screen pt-4">
-    <!-- Left Sidebar -->
-    <div class="hidden lg:block w-[360px] fixed left-0 top-14 bottom-0 overflow-y-auto hover:overflow-y-scroll no-scrollbar px-2 py-4">
-        <livewire:user.sidebar />
-    </div>
-
-    <!-- Main Feed -->
-    <div class="w-full lg:w-[590px] mx-auto pb-8">
-        <!-- Stories (Placeholder) -->
-        <livewire:user.story />
-
-        <livewire:user.post.create-form />
-        <livewire:user.post.calling-post />
-    </div>
-
-    <!-- Right Sidebar -->
-    <div class="hidden xl:block w-[360px] fixed right-0 top-14 bottom-0 overflow-y-auto hover:overflow-y-scroll no-scrollbar px-2 py-4">
-        <div class="mb-4">
-            <h3 class="text-gray-500 font-semibold text-[17px] mb-2 px-2">Sponsored</h3>
-            <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-200 transition">
-                <div class="w-[120px] h-[120px] rounded-lg overflow-hidden bg-gray-300 shrink-0">
-                     <img src="https://picsum.photos/200?random=10" class="w-full h-full object-cover">
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-semibold text-[15px] text-[#050505]">Premium Courses</span>
-                    <span class="text-[13px] text-[#65676b]">example.com</span>
-                </div>
-            </a>
+<div class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+        
+        <!-- Left Sidebar: Academic Menu -->
+        <div class="hidden lg:block w-1/4">
+            <div class="sticky top-24">
+                <livewire:user.sidebar />
+            </div>
         </div>
-        <hr class="my-4 border-gray-300 mx-2">
-        <livewire:user.onlinefriends />
+
+        <!-- Center Feed: Campus Updates -->
+        <div class="w-full lg:w-2/4">
+            <!-- Stories -->
+            <livewire:user.story />
+
+            <livewire:user.post.create-form />
+            
+            <div class="mt-6 space-y-6">
+                @livewire('user.post.calling-post')
+            </div>
+        </div>
+
+        <!-- Right Sidebar: Productivity Corner -->
+        <div class="hidden lg:block w-1/4">
+            <div class="sticky top-24 space-y-6">
+                <livewire:user.onlinefriends />
+                
+                <!-- Upcoming Deadlines Widget -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-slate-800">Deadlines</h3>
+                        <a href="#" class="text-xs font-medium text-indigo-600 hover:underline">View Calendar</a>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex gap-3 items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-red-50 rounded-xl flex flex-col items-center justify-center text-red-600 border border-red-100">
+                                <span class="text-xs font-bold uppercase">Dec</span>
+                                <span class="text-lg font-bold leading-none">10</span>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800 line-clamp-1">Data Structures Final</h4>
+                                <p class="text-xs text-slate-500">CS-101 • 10:00 AM</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-orange-50 rounded-xl flex flex-col items-center justify-center text-orange-600 border border-orange-100">
+                                <span class="text-xs font-bold uppercase">Dec</span>
+                                <span class="text-lg font-bold leading-none">12</span>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800 line-clamp-1">History Essay Due</h4>
+                                <p class="text-xs text-slate-500">HIS-202 • 11:59 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

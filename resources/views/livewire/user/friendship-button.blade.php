@@ -1,26 +1,26 @@
 <div>
     @if($friendshipStatus === 'not_friends')
-        <button wire:click="sendFriendRequest" class="w-full bg-[#e7f3ff] hover:bg-[#dbe7f2] text-[#1877f2] font-semibold px-4 py-2 rounded-md text-[15px] transition flex items-center justify-center gap-2 whitespace-nowrap">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" /></svg>
-            Add Friend
+        <button wire:click="sendFriendRequest" class="w-full bg-indigo-50 hover:bg-indigo-100 text-indigo-600 font-bold px-4 py-2 rounded-xl text-sm transition flex items-center justify-center gap-2 whitespace-nowrap">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" /></svg>
+            Connect
         </button>
     @elseif($friendshipStatus === 'request_sent')
-        <button wire:click="cancelFriendRequest" class="w-full bg-[#e4e6eb] hover:bg-[#d8dadf] text-black font-semibold px-4 py-2 rounded-md text-[15px] transition whitespace-nowrap">
+        <button wire:click="cancelFriendRequest" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-4 py-2 rounded-xl text-sm transition whitespace-nowrap">
             Cancel Request
         </button>
     @elseif($friendshipStatus === 'request_received')
         <div class="flex flex-col gap-2 w-full">
-            <button wire:click="acceptFriendRequest" class="w-full bg-[#1877f2] hover:bg-[#166fe5] text-white font-semibold px-4 py-2 rounded-md text-[15px] transition whitespace-nowrap">
-                Confirm
+            <button wire:click="acceptFriendRequest" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-4 py-2 rounded-xl text-sm transition whitespace-nowrap shadow-md shadow-indigo-200">
+                Accept
             </button>
-            <button wire:click="rejectFriendRequest" class="w-full bg-[#e4e6eb] hover:bg-[#d8dadf] text-black font-semibold px-4 py-2 rounded-md text-[15px] transition whitespace-nowrap">
-                Delete
+            <button wire:click="rejectFriendRequest" class="w-full bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold px-4 py-2 rounded-xl text-sm transition whitespace-nowrap">
+                Ignore
             </button>   
         </div>
     @elseif($friendshipStatus === 'friends')
-        <button wire:click="unfriend" class="w-full bg-[#e4e6eb] hover:bg-[#d8dadf] text-black font-semibold px-4 py-2 rounded-md text-[15px] transition flex items-center justify-center gap-2 whitespace-nowrap">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-            Friends
+        <button wire:click="unfriend" class="w-full bg-green-50 hover:bg-green-100 text-green-600 font-bold px-4 py-2 rounded-xl text-sm transition flex items-center justify-center gap-2 whitespace-nowrap">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+            Classmates
         </button>
     @endif
 </div>
