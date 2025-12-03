@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get("/dashboard", Dashboard::class)->name("dashboard");
     Route::get("/profile/{id?}", Profile::class)->name("profile");
     Route::get("/find", FindFriends::class)->name("find.friends");
+    Route::get("/assignments", App\Livewire\User\Assignment::class)->name("assignments");
     Route::post("/logout", function () {
         Auth::logout();
         return redirect()->route("login");

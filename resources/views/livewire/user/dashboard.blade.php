@@ -29,7 +29,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="font-bold text-slate-800">Deadlines</h3>
-                        <a href="#" class="text-xs font-medium text-indigo-600 hover:underline">View Calendar</a>
+                        <a href="{{ route('assignments') }}" class="text-xs font-medium text-indigo-600 hover:underline">View All</a>
                     </div>
                     <div class="space-y-4">
                         <div class="flex gap-3 items-start">

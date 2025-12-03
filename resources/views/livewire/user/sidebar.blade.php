@@ -20,12 +20,14 @@
                 </div>
                 <span class="font-medium">My Courses</span>
             </a>
-            <a href="#" class="flex items-center gap-3 px-3 py-2 text-slate-600 rounded-xl hover:bg-white hover:shadow-sm hover:text-indigo-600 transition group">
+            <a href="{{ route('assignments') }}" class="flex items-center gap-3 px-3 py-2 text-slate-600 rounded-xl hover:bg-white hover:shadow-sm hover:text-indigo-600 transition group">
                 <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>
                 </div>
                 <span class="font-medium">Assignments</span>
-                <span class="ml-auto bg-red-100 text-red-600 text-xs font-bold px-2 py-0.5 rounded-full">3</span>
+                @if($assignmentsCount > 0)
+                    <span class="ml-auto bg-red-100 text-red-600 text-xs font-bold px-2 py-0.5 rounded-full">{{ $assignmentsCount }}</span>
+                @endif
             </a>
             <a href="#" class="flex items-center gap-3 px-3 py-2 text-slate-600 rounded-xl hover:bg-white hover:shadow-sm hover:text-indigo-600 transition group">
                 <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition">
